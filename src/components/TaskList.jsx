@@ -3,6 +3,8 @@ function TaskList({
   tasks,
   deleteTask,
   toggleTask,
+  editTask,
+  updateTask,
 }) {
   return (
     <div>
@@ -16,6 +18,8 @@ function TaskList({
   index={index}
   deleteTask={deleteTask}
   toggleTask={toggleTask}
+  editTask={editTask}
+  updateTask={updateTask}
 />
         ))}
       </ul>
