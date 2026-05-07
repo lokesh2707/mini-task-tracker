@@ -13,6 +13,7 @@ function App() {
     const newTask = {
   text: input,
   completed: false,
+  isEditing: false,
 };
 
 setTasks([...tasks, newTask]);
@@ -41,6 +42,35 @@ setTasks([...tasks, newTask]);
 
   setTasks(updatedTasks);
 }
+function editTask(indexToEdit) {
+  const updatedTasks = tasks.map((task, index) => {
+    if (index === indexToEdit) {
+      return {
+        ...task,
+        isEditing: !task.isEditing,
+      };
+    }
+
+    return task;
+  });
+
+  setTasks(updatedTasks);
+}
+function updateTask(indexToUpdate, newText) {
+  const updatedTasks = tasks.map((task, index) => {
+    if (index === indexToUpdate) {
+      return {
+        ...task,
+        text: newText,
+        isEditing: false,
+      };
+    }
+
+    return task;
+  });
+
+  setTasks(updatedTasks);
+}
   return (
     <div>
       <h1>Mini Task Tracker</h1>
@@ -54,6 +84,8 @@ setTasks([...tasks, newTask]);
   tasks={tasks}
   deleteTask={deleteTask}
   toggleTask={toggleTask}
+  editTask={editTask}
+  updateTask={updateTask}
 />
     </div>
   );
